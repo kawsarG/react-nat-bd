@@ -1,0 +1,21 @@
+export const sections=[{
+    id:1,
+    name:'Movie',
+    icon:'movie-filter-outline',
+    color:'#15D295'
+},{
+    id:2,
+    name:'Support',
+    icon:'barley',
+    color:'#D29515'
+},{
+    id:3,
+    name:'About',
+    icon:'bat',
+    color:'#D23615'
+},{
+    id:4,
+    name:'Packages',
+    icon:'movie-filter-outline',
+    color:'#44B7E6'
+}];
