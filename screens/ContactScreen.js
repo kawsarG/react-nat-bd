@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View ,Text, FlatList} from 'react-native';
 
-const SupportScreen = () => {
+const ContactScreen = () => {
     const [data,setData] = useState([])
     useEffect(()=>{
         fetch('https://jsonplaceholder.typicode.com/posts')
@@ -26,4 +26,4 @@ const SupportScreen = () => {
     )
 }
 
-export default SupportScreen;
+export default ContactScreen;

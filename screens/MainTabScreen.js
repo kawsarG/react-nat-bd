@@ -9,6 +9,8 @@ import SupportScreen from './SupportScreen';
 import MovieScreen from './MovieScreen';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import PackagesScreen from './PackagesScreen';
+import MoviDetailScreen from './MoviDetailScreen'
+import { forHorizontalIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators';
 
 const HomeStack = createStackNavigator();
 const AboutStack = createStackNavigator();
@@ -22,7 +24,6 @@ const MainTabScreen=()=>{
         <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
-      
     >
       <Tab.Screen
         name="Home"
@@ -57,17 +58,22 @@ const MainTabScreen=()=>{
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Movie"
         component={MovieStackScreen}
         options={{
+          navigationOptions:()=>{
+            return {
+              tabBarVisible:false,
+            };
+         },
           tabBarLabel: 'Movies',
           tabBarColor:'#009387',
           tabBarIcon: ({ color }) => (
             <MaterialIcon name="local-movies" color={color} size={26} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
     )
 }
@@ -78,6 +84,7 @@ const HomeStackScreen=({navigation})=>(
       headerStyle:{
         backgroundColor:'#009387'
       },
+    
       headerTintColor:'#fff',
       headerTitleStyle:{
         alignSelf: 'center' ,
@@ -91,7 +98,9 @@ const HomeStackScreen=({navigation})=>(
         onPress={()=>navigation.openDrawer()}></Icon.Button>
       )
     }} />
-     <HomeStack.Screen name="Packages" component={PackagesScreen} />
+     <HomeStack.Screen name="Packages" options={{
+       headerShown:false
+     }} component={PackagesScreen} />
     
     </HomeStack.Navigator>
   )
@@ -138,25 +147,21 @@ const HomeStackScreen=({navigation})=>(
   )
 
 
-  const MovieStackScreen=({navigation})=>(
-    <MovieStack.Navigator screenOptions={{
-      headerStyle:{
-        backgroundColor:'#009387'
-      },
-      headerTintColor:'#fff',
-      headerTitleStyle:{
-        alignSelf: 'center' ,
-        fontWeight:'bold'
-      }
-    }}>
-    <MovieStack.Screen name="Movie" component={MovieScreen} options={{
-      headerLeft:()=>(
-        <Icon.Button name="ios-menu" size={25} backgroundColor="#009387"
-        onPress={()=>navigation.openDrawer()}></Icon.Button>
-      )
-    }}/>
-    </MovieStack.Navigator>
-  );
+  // const MovieStackScreen=({navigation,route})=>{
+    
+  //   return (<MovieStack.Navigator
+  //   screenOptions={{
+  //     tabBarLabel:'fuck'
+  //   }}
+  //   >
+  //     <MovieStack.Screen name="Movie" component={MovieScreen} options={({navigation,route})=>({
+  //       headerShown:false,
+  //     })}/>
+  //      <MovieStack.Screen name="Detail" options={{
+  //        headerShown:false,
+  //      }} component={MoviDetailScreen} />
+  //     </MovieStack.Navigator>)
+  // }
 
 
 
